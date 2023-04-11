@@ -1,10 +1,12 @@
 {
-  "name": "garden_db",
-  "version": "1.0.0",
+  "name": "garden-db",
+  "version": "0.0.0",
   "description": "App for tracking the lifecycle of seeds in a garden.",
-  "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "keywords": [
     "garden",
@@ -14,7 +16,16 @@
   "author": "Tristan Davis <Tristan.Seabrook@gmail.com>",
   "license": "ISC",
   "dependencies": {
+
     "dotenv": "^16.0.3",
-    "mongodb": "^5.2.0"
+    "mongodb": "^5.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "@vitejs/plugin-react": "^3.1.0",
+    "vite": "^4.2.0"
   }
 }
