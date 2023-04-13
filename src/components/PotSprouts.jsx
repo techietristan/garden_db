@@ -4,10 +4,10 @@ import ActionButtons from './ActionButtons'
 
 import handleEnter from '../modules/handleEnter'
 
-function PlantSeeds () {
+function PlantSeeds() {
 
     const plantSeeds = (
-        <div className='PlantSeeds'>
+        <div className='fields PlantSeeds'>
             <div className='inputField'>
             <label htmlFor='podAssetTag' >Pod Asset Tag: </label>
             <input className='assetTag podAssetTag' onKeyUp={event => handleEnter(event)}/>

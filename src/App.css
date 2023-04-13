@@ -21,6 +21,17 @@
   padding: 2em;
 }
 
+.fields {
+  background-color: rgba(151, 221, 20, 0.5);
+  padding: 1em;
+  margin: 1em;
+  border-radius: 1em 0;
+}
+
+label {
+  color:#fff;
+}
+
 .modeButton {
   margin-right: 2em;
 }

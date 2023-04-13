@@ -2,10 +2,10 @@ import ActionButtons from './ActionButtons'
 
 import handleEnter from '../modules/handleEnter'
 
-function SproutSeeds () {
+function SproutSeeds() {
 
     const sproutSeeds = (
-        <div className='SproutSeeds'>
+        <div className='fields SproutSeeds'>
             <div className='inputField'>
             <label htmlFor='seedAssetTag' >Seed Asset Tag: </label>
             <input className='assetTag seedAssetTag' onKeyUp={event => handleEnter(event)}/>    

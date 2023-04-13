@@ -1,4 +1,4 @@
-function ActionButtons(state) {
+function ActionButtons() {
     
     const actionButtons = (
         <div className='buttons'>
