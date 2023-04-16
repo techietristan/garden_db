@@ -5,8 +5,8 @@ export default function handleEnter(event) {
         .map(object => object.classList[1]);
       const inputClassName = event.target.classList[1]
       const inputClassIndex = inputFieldArr.indexOf(inputClassName)
-      const nextIndex = inputClassIndex + 1;       
-      
+      const nextIndex = inputClassIndex + 1;
+     
       if (nextIndex < inputFieldArr.length) {
         document.querySelectorAll('.assetTag')[nextIndex].focus()
       }
