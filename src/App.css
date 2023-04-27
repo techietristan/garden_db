@@ -21,7 +21,10 @@
   padding: 2em;
 }
 
-.fields {
+.field {
+  display: inline;
+}
+.fieldSet {
   background-color: rgba(151, 221, 20, 0.8);
   padding: 1em;
   margin: 1em;

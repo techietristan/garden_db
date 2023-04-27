@@ -1,20 +1,16 @@
-
-
 import ActionButtons from './ActionButtons'
+import Field from './Field'
+import { v4 as uuid } from 'uuid'
 
-import handleEnter from '../modules/handleEnter'
-
-function PlantPlants() {
+function PlantPlants(props) {
 
     const plantPlants = (
-        <div className='fields PlantPlants'>
-            <div className='inputField'>
-            <label htmlFor='potAssetTag' >Pot Asset Tag: </label>
-            <input className='assetTag potAssetTag' onKeyUp={event => handleEnter(event)}/>
-            <label htmlFor='plotAssetTag'>Plot Asset Tag: </label>
-            <input className='assetTag plotAssetTag' onKeyUp={event => handleEnter(event)}/>
+        <div className='fieldSet PlantPlants' id={props.index}>
+            <div className='inputFields'>
+                <Field id={uuid()} className={'potAssetTag'} description={'Pot Asset Tag: '}/>
+                <Field id={uuid()} className={'plotAssetTag'} description={'Plot Asset Tag: '}/>
             </div>
-            {<ActionButtons />}
+            {<ActionButtons index={props.index} />}
         </div>
     )
     return plantPlants

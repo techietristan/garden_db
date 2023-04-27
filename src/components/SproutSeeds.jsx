@@ -1,25 +1,20 @@
 import ActionButtons from './ActionButtons'
+import Field from './Field'
+import { v4 as uuid } from 'uuid'
 
-import handleEnter from '../modules/handleEnter'
-
-function SproutSeeds() {
+function SproutSeeds(props) {
 
     const sproutSeeds = (
-        <div className='fields SproutSeeds'>
-            <div className='inputField'>
-            <label htmlFor='seedAssetTag' >Seed Asset Tag: </label>
-            <input className='assetTag seedAssetTag' onKeyUp={event => handleEnter(event)}/>    
-            <label htmlFor='podAssetTag'>Pod Asset Tag: </label>
-            <input className='assetTag podAssetTag' onKeyUp={event => handleEnter(event)}/> 
+        <div className='fieldSet SproutSeeds' id={props.index}>
+            <div className='inputFields'>
+                <Field id={uuid()} className={'seedAssetTag'} description={'Seed Asset Tag: '}/>
+                <Field id={uuid()} className={'podAssetTag'} description={'Pod Asset Tag: '}/>
             </div>
-            <div className='inputField'>
-            <label htmlFor='seedUPC' autoFocus>Seed UPC: </label>
-            <input className='assetTag seedUPC' onKeyUp={event => handleEnter(event)}/>    
-            <label htmlFor='seedName' >Seed Name: </label>
-            <input className='assetTag seedName' onKeyUp={event => handleEnter(event)}/>
-
+            <div className='inputFields'>
+                <Field id={uuid()} className={'seedUPC'} description={'Seed UPC: '}/>
+                <Field id={uuid()} className={'seedName'} description={'Seed Name: '}/>
             </div>
-            {<ActionButtons />}
+            {<ActionButtons index={props.index} />}
         </div>
     )
     return sproutSeeds

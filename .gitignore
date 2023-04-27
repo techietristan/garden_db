@@ -1,4 +1,5 @@
 .env
+test.*k
 # Logs
 logs
 *.log
