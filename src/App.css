@@ -1,8 +1,17 @@
+label {
+  color:#fff;
+  float: left;
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+}
+
+.App {
+  display: inline-block;
 }
 
 .actionButton {
@@ -11,6 +20,8 @@
 
 .assetTag {
   margin-right: 2em;
+  display: inline;
+  float: right;
 }
 
 .buttons {
@@ -22,17 +33,15 @@
 }
 
 .field {
-  display: inline;
+  display: inline-block;
+  width: 35%;
 }
 .fieldSet {
   background-color: rgba(151, 221, 20, 0.8);
   padding: 1em;
   margin: 1em;
   border-radius: 1em 0;
-}
-
-label {
-  color:#fff;
+  width: fit-content;
 }
 
 .modeButton {

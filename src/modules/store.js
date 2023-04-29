@@ -2,85 +2,75 @@ import { create } from 'zustand'
 import { v4 as uuid } from 'uuid'
 
 
-const sproutSeedsFields = ({
+const sproutSeedsFieldSet = ({
   id: uuid(),
+  type: 'sproutSeeds',
   fieldSet: [{
-      description: 'Seed Asset Tag',
+      label: 'Seed Asset Tag',
+      className: 'seedAssetTag',
       value: null},{
-      description: 'Pod Asset Tag',
+      label: 'Pod Asset Tag',
+      className: 'podAssetTag',
       value: null},{
-      description: 'Seed UPC',
+      label: 'Seed UPC',
+      className: 'seedUPC',
       value: null},{
-      description: 'Seed Name',
+      label: 'Seed Name',
+      className: 'seedName',
       value: null
   }]
 })
 
-const potSproutsFields = ({
+const potSproutsFieldSet = ({
   id: uuid(),
+  type: 'potSprouts',
   fieldSet: [{
-      description: 'Pod Asset Tag',
+      label: 'Pod Asset Tag',
+      className: 'podAssetTag',
       value: null},{
-      description: 'Pot Asset Tag',
+      label: 'Pot Asset Tag',
+      className: 'potAssetTag',
       value: null
   }]
 })
 
-const plantPlantsFields = ({
+const plantPlantsFieldSet = ({
   id: uuid(),
+  type: 'plantPlants',
   fieldSet: [{
-      description: 'Pot Asset Tag',
+      label: 'Pot Asset Tag',
+      className: 'potAssetTag',
       value: null},{
-      description: 'Plot Asset Tag',
+      label: 'Plot Asset Tag',
+      className: 'plotAssetTag',
       value: null
   }]
 })
 
-
-
-
-const sproutSeeds = ({
-  mode: 'sproutSeeds',
-  modeDescription: 'Sprouting Seeds',
-  fieldsTemplate: sproutSeedsFields,
-  fields: []
-})
-
-const potSprouts = ({
-  mode: 'potSprouts',
-  modeDescription: 'Potting Sprouts',
-  fieldsTemplate: potSproutsFields,
-  fields: []
-})
-
-const plantPlants = ({
-  mode: 'plantPlants',
-  modeDescription: 'Planting Plants',
-  fieldsTemplate: plantPlantsFields,
-  fields: []
-})
-
-
-
+const getState = (state, mode, modeDescription, fieldSetTemplate) => {
+  const fieldSetsForCurrentMode = state.fieldSets.filter(fieldSet => fieldSet.type === mode).length
+  const fieldSets = (fieldSetsForCurrentMode ? [...state.fieldSets] : [...state.fieldSets, fieldSetTemplate])
+  return ({ mode, modeDescription, fieldSetTemplate, fieldSets })
+}
 
 const addFields = (state) => ({
   ...state,
-  fields: [...state.fields, state.fieldsTemplate]
+  fieldSets: [...state.fieldSets, state.fieldSetTemplate]
 })
 
-const deleteFieldSet = (state) => {
-    console.log(state)
-    return ({
-      ...state,
-      fields: state.fields.filter((field, index) => index !== 1 )
-    })
-}
+const deleteFieldSet = (state, idToDelete) => ({
+  ...state,
+  fieldSets: [state.fieldSets.filter(fieldSet => fieldSet.id !== idToDelete)]
+})
+
+const initialState = getState({fieldSets: [sproutSeedsFieldSet]}, 'sproutSeeds', 'Sprouting Seeds', sproutSeedsFieldSet)
   
 export const useStore = create((set) => ({
-  ...sproutSeeds,
-  sproutSeeds: () => set({...sproutSeeds, fields: [...sproutSeeds.fields, sproutSeeds.fieldsTemplate]}),
-  potSprouts: () => set({...potSprouts, fields: [...potSprouts.fields, potSprouts.fieldsTemplate]}),
-  plantPlants: () => set({...plantPlants, fields: [...plantPlants.fields, plantPlants.fieldsTemplate]}),
+  ...initialState,
+  sproutSeeds: () => set(state => getState(state, 'sproutSeeds', 'Sprouting Seeds', sproutSeedsFieldSet)),
+  potSprouts: () => set(state => getState(state, 'potSprouts', 'Potting Sprouts', potSproutsFieldSet)),
+  plantPlants: () => set(state => getState(state, 'plantPlants', 'Planting Plants', plantPlantsFieldSet)),
+  
   addFields: () => set(state => addFields(state)),
   deleteFieldSet: () => set((state) => deleteFieldSet(state))
 }))
