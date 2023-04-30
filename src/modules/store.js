@@ -2,7 +2,7 @@ import { create } from 'zustand'
 import { v4 as uuid } from 'uuid'
 
 
-const sproutSeedsFieldSet = ({
+const sproutSeedsFieldSet = () => ({
   id: uuid(),
   type: 'sproutSeeds',
   fieldSet: [{
@@ -21,7 +21,7 @@ const sproutSeedsFieldSet = ({
   }]
 })
 
-const potSproutsFieldSet = ({
+const potSproutsFieldSet = () => ({
   id: uuid(),
   type: 'potSprouts',
   fieldSet: [{
@@ -34,7 +34,7 @@ const potSproutsFieldSet = ({
   }]
 })
 
-const plantPlantsFieldSet = ({
+const plantPlantsFieldSet = () => ({
   id: uuid(),
   type: 'plantPlants',
   fieldSet: [{
@@ -49,21 +49,16 @@ const plantPlantsFieldSet = ({
 
 const getState = (state, mode, modeDescription, fieldSetTemplate) => {
   const fieldSetsForCurrentMode = state.fieldSets.filter(fieldSet => fieldSet.type === mode).length
-  const fieldSets = (fieldSetsForCurrentMode ? [...state.fieldSets] : [...state.fieldSets, fieldSetTemplate])
+  const fieldSets = (fieldSetsForCurrentMode ? [...state.fieldSets] : [...state.fieldSets, fieldSetTemplate()])
   return ({ mode, modeDescription, fieldSetTemplate, fieldSets })
 }
 
 const addFields = (state) => ({
   ...state,
-  fieldSets: [...state.fieldSets, state.fieldSetTemplate]
+  fieldSets: [...state.fieldSets, state.fieldSetTemplate()]
 })
 
-const deleteFieldSet = (state, idToDelete) => ({
-  ...state,
-  fieldSets: [state.fieldSets.filter(fieldSet => fieldSet.id !== idToDelete)]
-})
-
-const initialState = getState({fieldSets: [sproutSeedsFieldSet]}, 'sproutSeeds', 'Sprouting Seeds', sproutSeedsFieldSet)
+const initialState = getState({fieldSets: [sproutSeedsFieldSet()]}, 'sproutSeeds', 'Sprouting Seeds', sproutSeedsFieldSet)
   
 export const useStore = create((set) => ({
   ...initialState,
@@ -72,5 +67,5 @@ export const useStore = create((set) => ({
   plantPlants: () => set(state => getState(state, 'plantPlants', 'Planting Plants', plantPlantsFieldSet)),
   
   addFields: () => set(state => addFields(state)),
-  deleteFieldSet: () => set((state) => deleteFieldSet(state))
+  deleteFieldSet: (id) => set(state => ({...state, fieldSets: state.fieldSets.filter(fieldSet => fieldSet.id != id)})),
 }))

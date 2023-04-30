@@ -4,13 +4,14 @@ import { v4 as uuid } from 'uuid'
 
 function FieldSet(props) {
     const fields = props.fields
+    const id = props.id
+
     const fieldSet = (
-        <div className={`fieldSet ${props.mode}`}>
+        <div className={`fieldSet ${props.mode}`} id={id}>
             <div className='inputFields'>
-                {console.log(fields)}
                 {fields.map(field => <Field className={field.className} label={field.label} key={uuid()} />)}
             </div>
-            {<ActionButtons />}
+            {<ActionButtons id={id}/>}
         </div>
     )
     return fieldSet
