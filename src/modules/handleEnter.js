@@ -11,7 +11,7 @@ export default function handleEnter(event) {
       document.querySelectorAll('.assetTag')[nextIndex].focus()
     }
     else {
-      console.log('update the database')
+      //update the database
     }
   }
 }

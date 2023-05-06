@@ -19,7 +19,7 @@ function App() {
       {
       fieldSets
         .filter(fieldSet => fieldSet.type === mode)
-        .map(fieldSet => <FieldSet mode={mode} fields={fieldSet.fieldSet} key={uuid()} id={fieldSet.id}/>)
+        .map(fieldSet => <FieldSet mode={mode} fields={fieldSet.fieldSet} key={fieldSet.id} id={fieldSet.id}/>)
       }
 
     </div>

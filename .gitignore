@@ -1,5 +1,5 @@
 .env
-test.*k
+temp.*
 # Logs
 logs
 *.log
