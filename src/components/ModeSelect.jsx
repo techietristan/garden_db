@@ -1,19 +1,14 @@
 import { useStore } from '../modules/store'
+import ModeButton from './ModeButton'
 
 function ModeSelect() {
 
     const modeSelect = (
         <div className="card modeSelect">
             <div className='buttons'>
-                <button type='button' className='modeButton' onClick={useStore((store) => store.sproutSeeds)}>
-                    Sprout Seeds
-                </button>
-                <button type='button' className='modeButton' onClick={useStore((store) => store.potSprouts)}>
-                    Pot Sprouts
-                </button>
-                <button type='button' className='modeButton' onClick={useStore((store) => store.plantPlants)}>
-                    Plant Plants
-                </button>
+                <ModeButton onClick={useStore((store) => store.sproutSeeds)} buttonText='Sprout Seeds' />
+                <ModeButton onClick={useStore((store) => store.potSprouts)} buttonText='Pot Sprouts' />
+                <ModeButton onClick={useStore((store) => store.plantPlants)} buttonText='Plant Plants' />
             </div>
         </div>
     )
