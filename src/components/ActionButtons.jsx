@@ -1,4 +1,5 @@
 import { useStore } from '../modules/store'
+import ActionButton from './ActionButton'
 
 function ActionButtons(props) {
     const id = props.id
@@ -7,9 +8,9 @@ function ActionButtons(props) {
 
     const actionButtons = (
         <div className='buttons'>
-            <button className='actionButton updateOneEntry' title='Update the Database with this Entry.'>&#9989;</button>
-            <button className='actionButton AddInputs' title='Add an Entry.' onClick={() => addFieldSet()}>&#10133;</button>
-            <button className='actionButton deleteInputs' title='Delete this Entry.' onClick={ () => deleteFieldSet(id)}>&#10060;</button>
+            <ActionButton className='updateOneEntry' title='Update the Database with this Entry.' onClick={() => {}} buttonText='&#9989;' />
+            <ActionButton className='AddInputs' title='Add an Entry.' onClick={() => addFieldSet()} buttonText='&#10133;' />
+            <ActionButton className='deleteInputs' title='Delete this Entry.' onClick={ () => deleteFieldSet(id)} buttonText='&#10060;' />
         </div>
     )
 
