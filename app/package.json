@@ -13,11 +13,9 @@
     "seeds",
     "database"
   ],
-  "author": "Tristan Davis <Tristan.Seabrook@gmail.com>",
+  "author": "Tristan Davis <TechieTristan@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "dotenv": "^16.0.3",
-    "mongodb": "^5.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "uuid": "^9.0.0",

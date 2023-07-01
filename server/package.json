@@ -1,0 +1,32 @@
+{
+  "name": "garden-db",
+  "version": "0.0.0",
+  "description": "App for tracking the lifecycle of seeds in a garden.",
+  "type": "module",
+  "scripts": {
+    "dev": "node index.mjs",
+    "build": "",
+    "preview": ""
+  },
+  "keywords": [
+    "garden",
+    "seeds",
+    "database"
+  ],
+  "author": "Tristan Davis <TechieTristan@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-async-errors": "^3.1.1",
+    "mongo": "^0.1.0",
+    "mongodb": "^5.5.0",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "depcheck": "^1.4.3",
+    "nodemon": "^2.0.22",
+    "vite": "^4.2.0"
+  }
+}

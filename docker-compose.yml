@@ -2,8 +2,8 @@ version: "3"
 services:
   mongo:
     container_name: mongo
-    image: mongo
+    image: mongo:latest
     volumes:
-      - ./data:/data/db
+      - ./server/data:/data/db
     ports:
       - '27018:27017'

@@ -26,6 +26,7 @@ label {
 
 .buttons {
   margin: 1em;
+  width: 50%;
 }
 
 .card {
@@ -45,6 +46,8 @@ label {
 }
 
 .modeButton {
-  margin-right: 2em;
+  margin-bottom: 1em;
+  display: block;
+  width: 50%;
 }
 
